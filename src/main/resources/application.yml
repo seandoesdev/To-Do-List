@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /app
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tododb?
+    username: sean
+    password: sean123
+  thymeleaf:
+    prefix : classpath:templates/
+    suffix : .html
+    cache : false
