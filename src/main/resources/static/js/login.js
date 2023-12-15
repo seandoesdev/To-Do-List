@@ -1,97 +1,46 @@
-// LOGIN TABS
-$(function() {
-  tab = $('.tabs h3 a');
-  tab.on('click', function(event) {
-    event.preventDefault();
-    tab.removeClass('active');
-    $(this).addClass('active');
-    tab_content = $(this).attr('href');
-    $('div[id$="tab-content"]').removeClass('active');
-    $(tab_content).addClass('active');
-  });
-});
+const time_to_show_login = 400;
+const time_to_hidden_login = 200;
 
-// SLIDESHOW
-$(function() {
-  $('#slideshow > div:gt(0)').hide();
-  setInterval(function() {
-    $('#slideshow > div:first')
-    .fadeOut(1000)
-    .next()
-    .fadeIn(1000)
-    .end()
-    .appendTo('#slideshow');
-  }, 3850);
-});
+function change_to_login() {
+document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";  
+document.querySelector('.cont_form_login').style.display = "block";
+document.querySelector('.cont_form_sign_up').style.opacity = "0";               
 
-// CUSTOM JQUERY FUNCTION FOR SWAPPING CLASSES
-(function($) {
-  'use strict';
-  $.fn.swapClass = function(remove, add) {
-    this.removeClass(remove).addClass(add);
-    return this;
-  };
-}(jQuery));
+setTimeout(function(){  document.querySelector('.cont_form_login').style.opacity = "1"; },time_to_show_login);  
+  
+setTimeout(function(){    
+document.querySelector('.cont_form_sign_up').style.display = "none";
+},time_to_hidden_login);  
+  }
 
-// SHOW/HIDE PANEL ROUTINE (needs better methods)
-// I'll optimize when time permits.
-$(function() {
-  $('.agree, .forgot, #toggle-terms, .log-in, .sign-up').on('click', function(event) {
-    event.preventDefault();
-    var user = $('.user'),terms = $('.terms'),form = $('.form-wrap'),recovery = $('.recovery'),close = $('#toggle-terms'),arrow = $('.tabs-content .fa');
-    if ($(this).hasClass('agree') || $(this).hasClass('log-in') || ($(this).is('#toggle-terms')) && terms.hasClass('open')) {
-      if (terms.hasClass('open')) {
-        form.swapClass('open', 'closed');
-        terms.swapClass('open', 'closed');
-        close.swapClass('open', 'closed');
-      } else {
-        if ($(this).hasClass('log-in')) {
-          return;
-        }
-        form.swapClass('closed', 'open');
-        terms.swapClass('closed', 'open').scrollTop(0);
-        close.swapClass('closed', 'open');
-        user.addClass('overflow-hidden');
-      }
-    }
-    else if ($(this).hasClass('forgot') || $(this).hasClass('sign-up') || $(this).is('#toggle-terms')) {
-      if (recovery.hasClass('open')) {
-        form.swapClass('open', 'closed');
-        recovery.swapClass('open', 'closed');
-        close.swapClass('open', 'closed');
-      } else {
-        if ($(this).hasClass('sign-up')) {
-          return;
-        }
-        form.swapClass('closed', 'open');
-        recovery.swapClass('closed', 'open');
-        close.swapClass('closed', 'open');
-        user.addClass('overflow-hidden');
-      }
-    }
-  });
-});
+  const time_to_show_sign_up = 100;
+  const time_to_hidden_sign_up = 400;
 
-// DISPLAY MSSG
-$(function() {
-  $('.recovery .button').on('click', function(event) {
-    event.preventDefault();
-    $('.recovery .mssg').addClass('animate');
-    setTimeout(function() {
-      $('.form-wrap').swapClass('open', 'closed');
-      $('.recovery').swapClass('open', 'closed');
-      $('#toggle-terms').swapClass('open', 'closed');
-      $('.tabs-content .fa').swapClass('active', 'inactive');
-      $('.recovery .mssg').removeClass('animate');
-    }, 2500);
-  });
-});
+function change_to_sign_up(at) {
+  document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_sign_up";
+  document.querySelector('.cont_form_sign_up').style.display = "block";
+document.querySelector('.cont_form_login').style.opacity = "0";
+  
+setTimeout(function(){  document.querySelector('.cont_form_sign_up').style.opacity = "1";
+},time_to_show_sign_up);  
 
-// DISABLE SUBMIT FOR DEMO
-$(function() {
-  $('.button').on('click', function(event) {
-    $(this).stop();
-    event.preventDefault();
-    return false;
-  });
-});
+setTimeout(function(){   document.querySelector('.cont_form_login').style.display = "none";
+},time_to_hidden_sign_up);  
+
+
+}    
+
+const time_to_hidden_all = 500;
+
+function hidden_login_and_sign_up() {
+
+document.querySelector('.cont_forms').className = "cont_forms";  
+document.querySelector('.cont_form_sign_up').style.opacity = "0";               
+document.querySelector('.cont_form_login').style.opacity = "0"; 
+
+setTimeout(function(){
+document.querySelector('.cont_form_sign_up').style.display = "none";
+document.querySelector('.cont_form_login').style.display = "none";
+},time_to_hidden_all);  
+  
+  }
