@@ -3,6 +3,7 @@ package com.example.todolist.web.login;
 import com.example.todolist.domain.user.entity.User;
 import com.example.todolist.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller
-public class LoginController {
+public class
+LoginController {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserService userServiceImpl;
@@ -41,6 +43,12 @@ public class LoginController {
 
         userServiceImpl.create(user);
         return "redirect:/loginForm";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/info")
+    public @ResponseBody String info(){
+        return "info";
     }
 
     @GetMapping("/user")
