@@ -1,4 +1,4 @@
-package com.example.todolist.config.auth;
+package com.example.todolist.auth;
 
 import com.example.todolist.domain.user.entity.User;
 import com.example.todolist.domain.user.repository.UserRepository;
