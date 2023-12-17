@@ -1,4 +1,4 @@
-package com.example.todolist.auth;
+package com.example.todolist.config.auth;
 
 import com.example.todolist.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
