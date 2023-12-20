@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .loginPage("/loginForm")
                 .usernameParameter("email")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/loginForm");
+                .defaultSuccessUrl("/");
 
         return http.build();
     }
