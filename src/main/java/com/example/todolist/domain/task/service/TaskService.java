@@ -9,6 +9,6 @@ public interface TaskService {
     /**
      * 업무 저장
      */
-    public int create(Task task);
+    public Task save(Task task);
     public List<Task> getAllTask(int userId);
 }
