@@ -7,7 +7,12 @@ import java.util.Optional;
 
 public interface JpaTaskRepository {
     Task save(Task task);
+
+    int update(Task task);
+
     List<Task> findById(int id);
+
     Optional<Task> findByTitle(String title);
+
     List<Task> findAll();
 }

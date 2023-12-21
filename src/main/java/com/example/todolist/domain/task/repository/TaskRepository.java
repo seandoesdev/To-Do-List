@@ -22,6 +22,14 @@ public class TaskRepository implements JpaTaskRepository {
     }
 
     @Override
+    public int update(Task task) {
+        int result = em.createQuery("update task t set t.title, t.description, t.deadline, t.priority, t.status", Task.class)
+                .setParameter("task", task)
+                .executeUpdate();
+        return result;
+    }
+
+    @Override
     public List<Task> findById(int id) {
         List<Task> result = Collections.singletonList(em.find(Task.class, id));
         return result;
