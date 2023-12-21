@@ -34,7 +34,9 @@ public class TaskController {
 
     @PostMapping("/task/update")
     public String update(@RequestBody Task task){
-        return "";
+        int updatedTask = taskServiceImpl.update(task);
+        log.info("updated {}", updatedTask);
+        return "/";
     }
 
     @PostMapping("/task/delete")
